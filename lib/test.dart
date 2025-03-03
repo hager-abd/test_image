@@ -16,6 +16,16 @@ class _TestScreenState extends State<TestScreen> {
       return Scaffold(
         appBar: AppBar(
           title: Text('Images'),
+          centerTitle: true,
+          leading: InkWell(
+            onTap: () {
+              Navigator.pop(context);
+            },
+            child: Icon(
+              Icons.arrow_back_ios,
+              color: Colors.black,
+            ),
+          )
         ),
         body: SingleChildScrollView(
           child: Column(
@@ -42,86 +52,6 @@ class _TestScreenState extends State<TestScreen> {
                               ),
                             ),
                           ),
-
-                          Row(
-                            children: [
-
-                              InkWell(
-                                onTap: () {
-
-                                },
-                                child: CircleAvatar(
-                                  radius: 20,
-                                  child: Container(
-                                    clipBehavior: Clip.antiAliasWithSaveLayer,
-                                    decoration: BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      color: Colors.grey[50],
-                                    ),
-                                    child: Image.asset(
-                                      Theme.of(context).brightness == Brightness.dark
-                                          ? "assets/images/icon_comment_dark.jpg"
-                                          : "assets/images/comment.png",
-                                      fit: BoxFit.cover,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              SizedBox(width: 10),
-
-                              InkWell(
-                                onTap: () {
-
-                                },
-                                child: CircleAvatar(
-                                  radius: 15,
-                                  child: Container(
-                                    clipBehavior: Clip.antiAliasWithSaveLayer,
-                                    decoration: BoxDecoration(color: Colors.grey[50]),
-                                    child: Image.asset(
-                                      Theme.of(context).brightness == Brightness.dark
-                                          ? "assets/images/share_dark.jpg"
-                                          : "assets/images/instagram-share-icon.png",
-                                      fit: BoxFit.cover,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              Spacer(),
-
-
-                              InkWell(
-                                onTap: () {
-
-                                },
-                                child: CircleAvatar(
-                                  radius: 15,
-                                  child: Container(
-                                    clipBehavior: Clip.antiAliasWithSaveLayer,
-                                    decoration: BoxDecoration(color: Colors.grey[50]),
-                                    child: Image.asset(
-                                      Theme.of(context).brightness == Brightness.dark
-                                          ? "assets/images/save_dark.jpg"
-                                          : "assets/images/instagram-save-icon.png",
-                                      fit: BoxFit.cover,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-
-                          SizedBox(height: 8),
-
-                          Text(
-                            "100 Likes",
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
-                            ),
-                          ),
-
-
 
                           Divider(color: Colors.grey.shade300, thickness: 1),
                         ],

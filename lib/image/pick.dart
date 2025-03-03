@@ -150,7 +150,7 @@ class _PickScreenState extends State<PickScreen> {
                     style: TextStyle(color: Colors.black, fontSize: 30, fontWeight: FontWeight.bold),
                   ),
                 ),
-                SizedBox(width: 50),
+                SizedBox(width: 40),
                 InkWell(
                   onTap: () {
                     Navigator.pushReplacement(
@@ -163,6 +163,7 @@ class _PickScreenState extends State<PickScreen> {
                     style: TextStyle(color: Colors.black, fontSize: 30, fontWeight: FontWeight.bold),
                   ),
                 ),
+                SizedBox(width: 40),
           InkWell(
           onTap: () {
             Navigator.push(

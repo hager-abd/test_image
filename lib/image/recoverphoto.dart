@@ -11,7 +11,7 @@ class RecoverScreen extends StatefulWidget {
   @override
   State<RecoverScreen> createState() => _RecoverScreenState();
 }
-
+bool isUploading = false;
 class _RecoverScreenState extends State<RecoverScreen> {
   TextEditingController _textController = TextEditingController();
   @override
@@ -41,16 +41,38 @@ class _RecoverScreenState extends State<RecoverScreen> {
                 storage.pickImage();
               }, icon: Icon(Icons.image)),
               InkWell(
-                  onTap: () {
-                    storage.uploadImage(context);
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => TestScreen(),
-                      ),
-                    );
-                  },
-                  child: Icon(Icons.arrow_circle_right_outlined,size: 30,)),
+                onTap: isUploading
+                    ? null
+                    : () {
+                  setState(() {
+                    isUploading = true;
+                  });
+
+                  storage.uploadImage(context).then((_) {
+                    if (mounted) {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => TestScreen(),
+                        ),
+                      );
+                    }
+                  }).whenComplete(() {
+                    if (mounted) {
+                      setState(() {
+                        isUploading = false;
+                      });
+                    }
+                  });
+                },
+                child: isUploading
+                    ? CircularProgressIndicator()
+                    : Icon(
+                  Icons.arrow_circle_right_outlined,
+                  size: 30,
+                ),
+              ),
+
 
 
             ],),

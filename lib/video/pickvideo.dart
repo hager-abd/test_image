@@ -177,7 +177,7 @@ class _PickVideoState extends State<PickVideo> {
                     style: TextStyle(color: Colors.black, fontSize: 30, fontWeight: FontWeight.bold),
                   ),
                 ),
-                SizedBox(width: 50),
+                SizedBox(width: 40),
                 InkWell(
                   onTap: () {
                     Navigator.pushReplacement(
@@ -190,6 +190,7 @@ class _PickVideoState extends State<PickVideo> {
                     style: TextStyle(color: Colors.black, fontSize: 30, fontWeight: FontWeight.bold),
                   ),
                 ),
+                SizedBox(width: 40),
                 InkWell(
                   onTap: () {
                     Navigator.push(
@@ -197,6 +198,7 @@ class _PickVideoState extends State<PickVideo> {
                       MaterialPageRoute(builder: (context) => ReelsScreen()),
                     );
                   },
+
                   child: Text(
                     "Reels",
                     style: TextStyle(color: Colors.black, fontSize: 30, fontWeight: FontWeight.bold),

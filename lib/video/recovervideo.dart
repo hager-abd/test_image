@@ -16,7 +16,7 @@ class RecoverVideo extends StatefulWidget {
 
 class _RecoverVideoState extends State<RecoverVideo> {
   final TextEditingController _textController = TextEditingController();
-
+  bool isUploading = false;
   @override
   Widget build(BuildContext context) {
     return Consumer<StorageProvider>(
@@ -52,23 +52,41 @@ class _RecoverVideoState extends State<RecoverVideo> {
                   },
                   icon: Icon(Icons.video_library),
                 ),
+
+
                 InkWell(
-                  onTap: () async {
-                    await storage.uploadVideo(context);
-                    if (mounted) {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => ReelsScreen(),
-                        ),
-                      );
-                    }
+                  onTap: isUploading
+                      ? null
+                      : () {
+                    setState(() {
+                      isUploading = true;
+                    });
+
+                    storage.uploadVideo(context).then((_) {
+                      if (mounted) {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ReelsScreen(),
+                          ),
+                        );
+                      }
+                    }).whenComplete(() {
+                      if (mounted) {
+                        setState(() {
+                          isUploading = false;
+                        });
+                      }
+                    });
                   },
-                  child: Icon(
+                  child: isUploading
+                      ? CircularProgressIndicator()
+                      : Icon(
                     Icons.arrow_circle_right_outlined,
                     size: 30,
                   ),
                 ),
+
               ],
             ),
           ),

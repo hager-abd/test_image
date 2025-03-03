@@ -108,7 +108,6 @@ class StorageProvider extends ChangeNotifier{
 
       videos.add(videoUrl);
       notifyListeners();
-
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Video Uploaded Successfully')),
       );
